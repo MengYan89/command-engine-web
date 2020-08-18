@@ -1,0 +1,16 @@
+server:
+  port: 8001
+robot:
+  url: http://127.0.0.1:8080/
+  message: message/send
+logging:
+  level:
+    net.irregularhaguruma.engine.http.StApi: debug
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+spring:
+  profiles:
+    active: dev
