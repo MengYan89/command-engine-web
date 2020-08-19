@@ -19,6 +19,8 @@ import java.io.IOException;
 @Component
 public class StApiImpl implements StApi {
 
+
+
     @Autowired
     private OkHttpClient okHttpClient;
 
@@ -78,4 +80,6 @@ public class StApiImpl implements StApi {
         }
         return null;
     }
+
+
 }
