@@ -6,14 +6,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StConfig {
     @Value("${st.key}")
-    private String key;
+    private String[] key;
     @Value("${st.r18}")
     private String r18;
     @Value("${st.size1200}")
     private String size1200;
+    @Value("${st.url}")
+    private String url;
 
-    public String getKey() {
+    public String[] getKey() {
         return key;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public String getR18() {
