@@ -63,7 +63,7 @@ public class LoadBalancingClient {
 
     private int getClient() {
         Random random = new Random();
-        int n = random.nextInt(index.size()-1);
+        int n = random.nextInt(index.size());
         return index.get(n);
     }
 

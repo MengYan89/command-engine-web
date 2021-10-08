@@ -33,6 +33,9 @@ public class EngineImpl implements Engine {
 
     @Override
     public String messageEngine(MessageEngineEnum type, GroupMessageBean messageBean) {
+        if (messageBean.getMessage() == null || messageBean.getMessage().isEmpty()) {
+            return null;
+        }
         if (type == MessageEngineEnum.GROUP_MESSAGE) {
             int index = 0;
             MessageBean top =  messageBean.getMessage().get(index);
@@ -137,7 +140,17 @@ public class EngineImpl implements Engine {
                             }
                             // 没有找到指定关键字
                             else if (response.getCode() == StApiCodeEnum.KEYWORD_ISNULL.getCode()) {
-
+                                SendMessageBean bean = new SendMessageBean();
+                                bean.setGroupId(messageBean.getGroupId());
+                                bean.setId(messageBean.getId());
+                                bean.setType(MessageTypeEnum.GROUP_MESSAGE.getType());
+                                List<MessageBean> list = new ArrayList<>();
+                                int i = 0;
+                                list.add(new MessageBean(i++,MessageEnum.AT.getType(),messageBean.getId().toString()));
+                                list.add(new MessageBean(i++,MessageEnum.PLAIN_TEXT.getType(), "你的xp太怪了"));
+                                bean.setMessage(list);
+                                robotApi.sendMessage(bean);
+                                continue;
                             } else{
                                 // 其他异常
                             }

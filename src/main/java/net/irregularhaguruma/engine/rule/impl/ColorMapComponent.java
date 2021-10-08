@@ -20,7 +20,6 @@ public class ColorMapComponent implements GroupRuleComponent {
                 if (pattern.matcher(message.getMsgDate()).matches()) {
                     StApi stApi = (StApi) SpringContextUtil.getBean(StApi.class);
                     RobotApi robotApi = (RobotApi) SpringContextUtil.getBean(RobotApi.class);
-
                     StApiResponse response = stApi.getSt();
                     System.out.println("随机涩图请求:"+response);
                     if (response.getCode() == StApiCodeEnum.SUCCESS.getCode()) {
